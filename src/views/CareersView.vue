@@ -55,7 +55,7 @@ const posts = [
         </div>
       </div>
 
-      <div class="px-20 pt-12 flex flex-row gap-16 flex-wrap items-start justify-center">
+      <div class="px-6 lg:px-8 pt-12 flex flex-row gap-16 flex-wrap items-start justify-center">
         <div v-for="post in posts" :key="post.id" class="flex max-w-xl flex-col items-start">
           <div class="grow-0">
             <h3 class="mt-3 text-lg font-semibold leading-6">

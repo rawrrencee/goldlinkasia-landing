@@ -59,14 +59,14 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
           </div>
           <div class="flex flex-row items-center">
             <DarkModeToggle class="shrink-0"/>
-            <button
-                class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white lg:hidden"
-                type="button"
+            <Button
+                variant="ghost"
+                size="icon"
                 @click="mobileMenuOpen = true"
             >
               <span class="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" class="h-6 w-6"/>
-            </button>
+            </Button>
           </div>
         </nav>
       </div>
