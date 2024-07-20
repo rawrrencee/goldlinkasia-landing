@@ -31,7 +31,7 @@ const stores = [
 
     <div class="bg-background w-full pt-24">
       <template v-for="(store, i) in stores" :key="i">
-        <div class="bg-gray-200 dark:bg-gray-900 pb-20 sm:pb-24 xl:pb-0">
+        <div class="bg-gray-200 dark:bg-gray-900 pb-20 sm:pb-24">
           <div
               class="mx-auto flex max-w-7xl flex-col items-center gap-x-8 gap-y-10 px-6 sm:gap-y-8 lg:px-8 xl:flex-row xl:items-stretch">
             <div class="-mt-8 w-full max-w-2xl xl:-mb-8 xl:w-96 xl:flex-none">

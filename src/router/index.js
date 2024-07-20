@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router'
+import {createMemoryHistory, createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 export const ROUTES = {
@@ -10,8 +10,13 @@ export const ROUTES = {
     CAREERS: '/careers',
 }
 
-const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+const isServer = typeof window === 'undefined';
+const history = isServer
+    ? createMemoryHistory(import.meta.env.BASE_URL)
+    : createWebHistory(import.meta.env.BASE_URL);
+
+const routerOptions = {
+    history: history,
     routes: [
         {
             path: ROUTES.HOME,
@@ -47,10 +52,12 @@ const router = createRouter({
             component: () => import('../views/CareersView.vue')
         },
     ],
-    scrollBehavior(to, from, savedPosition) {
+    scrollBehavior() {
         // always scroll to top
         return {top: 0}
     },
-})
+}
+
+const router = createRouter(routerOptions);
 
 export default router

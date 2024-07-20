@@ -18,6 +18,8 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+/.vite-ssg-temp/*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

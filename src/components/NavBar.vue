@@ -17,6 +17,7 @@ const navigation = [
 ];
 
 const mobileMenuOpen = ref(false);
+const closeButtonRef = ref(null);
 const companyName = import.meta.env.VITE_COMPANY_NAME;
 </script>
 
@@ -72,6 +73,7 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
     </div>
     <Dialog
         :open="mobileMenuOpen"
+        :initialFocus="closeButtonRef"
         class="lg:hidden"
         @close="mobileMenuOpen = false"
     >
@@ -93,6 +95,7 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
           <button
               class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
               type="button"
+              ref="closeButtonRef"
               @click="mobileMenuOpen = false"
           >
             <span class="sr-only">Close menu</span>
@@ -111,7 +114,7 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
                     @click="mobileMenuOpen = !mobileMenuOpen"
                 >{{ item.name }}
                 </RouterLink>
-                <a v-else :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-gray-700" @click="openInWindow(item.href)" @click.prevent>{{ item.name }}</a>
+                <a v-else :key="item.name" :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-gray-700" @click="openInWindow(item.href)" @click.prevent>{{ item.name }}</a>
               </template>
             </div>
           </div>
