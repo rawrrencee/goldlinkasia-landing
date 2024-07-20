@@ -51,6 +51,11 @@ const routerOptions = {
             name: 'careers',
             component: () => import('../views/CareersView.vue')
         },
+        {
+            path: '/:notFound',
+            name: 'not-found',
+            component: () => import('../views/NotFoundView.vue')
+        }
     ],
     scrollBehavior() {
         // always scroll to top
