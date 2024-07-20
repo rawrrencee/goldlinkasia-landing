@@ -60,6 +60,7 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
           <div class="flex flex-row items-center">
             <DarkModeToggle class="shrink-0"/>
             <Button
+                class="lg:hidden"
                 variant="ghost"
                 size="icon"
                 @click="mobileMenuOpen = true"
