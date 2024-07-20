@@ -5,6 +5,8 @@ export const ROUTES = {
     HOME: '/',
     ABOUT: '/about',
     BRANDS: '/brands',
+    SHOP: '/shop',
+    STORES: '/stores',
     CAREERS: '/careers',
 }
 
@@ -25,14 +27,30 @@ const router = createRouter({
             component: () => import('../views/AboutView.vue')
         },
         {
+            path: ROUTES.BRANDS,
+            name: 'brands',
+            component: () => import('../views/BrandsView.vue')
+        },
+        {
+            path: ROUTES.SHOP,
+            name: 'shop',
+            component: () => import('../views/ShopView.vue')
+        },
+        {
+            path: ROUTES.STORES,
+            name: 'stores',
+            component: () => import('../views/StoresView.vue')
+        },
+        {
             path: ROUTES.CAREERS,
             name: 'careers',
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import('../views/CareersView.vue')
         },
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        // always scroll to top
+        return {top: 0}
+    },
 })
 
 export default router

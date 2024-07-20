@@ -30,7 +30,7 @@ const bgUrl = computed(() => import.meta.env.VITE_BACKGROUND_1)
             <p class="mt-6 leading-8 text-gray-500 dark:text-gray-400">Brands under the Goldlink group include
               Ermenegildo Zegna, Tateossian, Thompson, Lanvin (men’s accessories), Orobianco, Church’s (men’s
               accessories), TecknoMonster, Andrew’s Ties and A. Azthom.</p>
-            <RouterLink :to="ROUTES.ABOUT">
+            <RouterLink :to="ROUTES.BRANDS">
               <Button class="mt-6" variant="link">More Info&nbsp;<span aria-hidden="true">→</span></Button>
             </RouterLink>
           </div>

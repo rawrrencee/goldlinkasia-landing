@@ -3,7 +3,7 @@ import {computed} from "vue";
 import {Button} from '@/components/ui/button'
 import JobSearchIcon from "@/icons/JobSearchIcon.vue";
 
-const bgUrl = computed(() => import.meta.env.VITE_BACKGROUND_2)
+const bgUrl = computed(() => import.meta.env.VITE_BACKGROUND_3)
 const posts = [
   {
     title: 'Retail Management Trainee',
@@ -55,30 +55,31 @@ const posts = [
         </div>
       </div>
 
-      <div class="px-20 pt-12 flex flex-row gap-16 flex-wrap items-center justify-center">
+      <div class="px-20 pt-12 flex flex-row gap-16 flex-wrap items-start justify-center">
         <div v-for="post in posts" :key="post.id" class="flex max-w-xl flex-col items-start">
-          <div class="grow-0 flex items-center gap-x-4 text-xs">
-            <Button size="sm" :href="post.href" as="a">
-              <div class="flex flex-row gap-1 items-center">
-                <JobSearchIcon/>
-                {{ post.category.title }}
-              </div>
-            </Button>
-          </div>
-          <div class="grow-0 pt-2">
+          <div class="grow-0">
             <h3 class="mt-3 text-lg font-semibold leading-6">
               {{ post.title }}
             </h3>
             <p class="mt-5 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ post.description }}</p>
 
             <h4 class="mt-5 mb-2 font-semibold leading-6 text-gray-600 dark:text-gray-300">Responsibilities</h4>
-            <li v-for="(r, i) in post.responsibilities" :key="i" class="mt-1 text-sm leading-6 text-gray-500 dark:text-gray-400">{{
-                r
-              }}
+            <li v-for="(r, i) in post.responsibilities" :key="i"
+                class="mt-1 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ r }}
             </li>
 
             <h4 class="mt-5 mb-2 font-semibold leading-6 text-gray-600 dark:text-gray-300">Requirements</h4>
-            <li v-for="(r, i) in post.requirements" :key="i" class="mt-1 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ r }}</li>
+            <li v-for="(r, i) in post.requirements" :key="i"
+                class="mt-1 text-sm leading-6 text-gray-500 dark:text-gray-400">{{ r }}
+            </li>
+          </div>
+          <div class="grow-0 pt-6 flex items-center gap-x-4 text-xs">
+            <Button :href="post.href" as="a" size="sm">
+              <div class="flex flex-row gap-1 items-center">
+                <JobSearchIcon/>
+                {{ post.category.title }}
+              </div>
+            </Button>
           </div>
         </div>
       </div>

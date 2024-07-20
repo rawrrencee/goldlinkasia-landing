@@ -5,13 +5,14 @@ import {ref} from "vue";
 import DarkModeToggle from "@/components/DarkModeToggle.vue";
 import {Button} from "@/components/ui/button/index.js";
 import {ROUTES} from "@/router/index.js";
+import {openInWindow} from "@/lib/utils.js";
 
 const navigation = [
   {name: "About Us", href: ROUTES.ABOUT},
-  {name: "Our Brands", href: "#"},
-  {name: "Shop", href: "#"},
-  {name: "Editorial", href: "#"},
-  {name: "Our Stores", href: "#"},
+  {name: "Our Brands", href: ROUTES.BRANDS},
+  {name: "Shop Online", href: ROUTES.SHOP},
+  {name: "Editorial", href: "https://cufflinks.com.sg/blogs/editorial"},
+  {name: "Stores", href: ROUTES.STORES},
   {name: "Careers", href: ROUTES.CAREERS},
 ];
 
@@ -38,14 +39,22 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
             </Button>
           </RouterLink>
           <div class="hidden lg:ml-12 lg:flex">
-            <RouterLink v-for="item in navigation" :key="item.name" :to="item.href">
-              <Button
-                  :href="item.href"
-                  as="a"
-                  variant="ghost"
-              >{{ item.name }}
-              </Button>
-            </RouterLink>
+            <template v-for="item in navigation">
+              <RouterLink
+                  v-if="!item.href.includes('http')"
+                  :key="item.name"
+                  :to="item.href"
+                  @click="mobileMenuOpen = !mobileMenuOpen"
+              >
+                <Button
+                    :href="item.href"
+                    as="a"
+                    variant="ghost"
+                >{{ item.name }}
+                </Button>
+              </RouterLink>
+              <Button v-else as="a" variant="ghost" :href="item.href" @click="openInWindow(item.href)" @click.prevent>{{ item.name }}</Button>
+            </template>
           </div>
           <div class="flex flex-row items-center">
             <DarkModeToggle class="shrink-0"/>
@@ -93,14 +102,17 @@ const companyName = import.meta.env.VITE_COMPANY_NAME;
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
-              <RouterLink
-                  v-for="item in navigation"
-                  :key="item.name"
-                  :to="item.href"
-                  @click="mobileMenuOpen = !mobileMenuOpen"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-gray-700"
-              >{{ item.name }}</RouterLink
-              >
+              <template v-for="item in navigation">
+                <RouterLink
+                    v-if="!item.href.includes('http')"
+                    :key="item.name"
+                    :to="item.href"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    @click="mobileMenuOpen = !mobileMenuOpen"
+                >{{ item.name }}
+                </RouterLink>
+                <a v-else :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-gray-700" @click="openInWindow(item.href)" @click.prevent>{{ item.name }}</a>
+              </template>
             </div>
           </div>
         </div>

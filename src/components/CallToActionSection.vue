@@ -4,7 +4,9 @@ import {computed} from "vue";
 import {ROUTES} from "@/router/index.js";
 
 const ctaLabel1 = computed(() => import.meta.env.VITE_CTA_LABEL_1)
+const ctaLabel1Url = computed(() => import.meta.env.VITE_CTA_LABEL_1_URL)
 const ctaLabel2 = computed(() => import.meta.env.VITE_CTA_LABEL_2)
+const ctaLabel2Url = computed(() => import.meta.env.VITE_CTA_LABEL_2_URL)
 </script>
 
 <template>
@@ -42,8 +44,12 @@ const ctaLabel2 = computed(() => import.meta.env.VITE_CTA_LABEL_2)
             to dress up.
           </p>
           <div class="mt-10 flex items-center gap-x-6">
-            <Button>{{ ctaLabel1 }}</Button>
-            <Button variant="link">{{ ctaLabel2 }}&nbsp;<span aria-hidden="true">→</span></Button>
+            <RouterLink :to="ctaLabel1Url">
+              <Button>{{ ctaLabel1 }}</Button>
+            </RouterLink>
+            <RouterLink :to="ctaLabel2Url">
+              <Button variant="link">{{ ctaLabel2 }}&nbsp;<span aria-hidden="true">→</span></Button>
+            </RouterLink>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import FacebookIcon from "@/icons/FacebookIcon.vue";
 import InstagramIcon from "@/icons/InstagramIcon.vue";
 import LocationIcon from "@/icons/LocationIcon.vue";
 import ContactIcon from "@/icons/ContactIcon.vue";
+import {openInWindow} from "@/lib/utils.js";
 
 const footer = {
   companyName: import.meta.env.VITE_COMPANY_NAME,
@@ -30,10 +31,6 @@ const footer = {
       icon: InstagramIcon,
     },
   ],
-}
-
-const openInWindow = (url) => {
-  window.open(url)
 }
 </script>
 
